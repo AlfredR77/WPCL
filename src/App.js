@@ -199,34 +199,41 @@ function WeddingPlannerApp() {
 
   const roadmap = calculateRoadmap();
 
+  const headingStyle = {
+    fontFamily: "'Georgia', serif",
+    fontWeight: 300,
+    fontSize: "1.5rem",
+    color: "#333",
+    marginBottom: "15px",
+  };
+
   return (
     <div
       style={{
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "'Georgia', 'Times New Roman', serif",
         maxWidth: "600px",
         margin: "0 auto",
-        padding: "20px"
+        padding: "20px",
+        color: "#444",
       }}
     >
-      {/* L'elemento H1 con il titolo è stato rimosso da qui */}
-
       <div style={{ marginBottom: "20px" }}>
-        <h2>Add Accessories</h2>
+        <h2 style={headingStyle}>Add Accessories</h2>
         <input
           type="text"
           value={newAccessoryName}
           onChange={(e) => setNewAccessoryName(e.target.value)}
           placeholder="Accessory name"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: "10px", fontFamily: "inherit" }}
         />
         <input
           type="number"
           value={newAccessoryTime}
           onChange={(e) => setNewAccessoryTime(e.target.value)}
           placeholder="Processing time (days)"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: "10px", fontFamily: "inherit" }}
         />
-        <button onClick={handleAddAccessory}>Add</button>
+        <button onClick={handleAddAccessory} style={{ fontFamily: "inherit" }}>Add</button>
       </div>
 
       <div>
@@ -235,7 +242,7 @@ function WeddingPlannerApp() {
             {accessory.name} (Processing time: {accessory.processingTime} days)
             <button
               onClick={() => handleRemoveAccessory(index)}
-              style={{ marginLeft: "10px" }}
+              style={{ marginLeft: "10px", fontFamily: "inherit" }}
             >
               Remove
             </button>
@@ -244,16 +251,21 @@ function WeddingPlannerApp() {
       </div>
 
       <div style={{ marginTop: "20px" }}>
-        <h2>Select Wedding Date</h2>
-        <input type="date" value={weddingDate} onChange={handleDateChange} />
+        <h2 style={headingStyle}>Select Wedding Date</h2>
+        <input 
+          type="date" 
+          value={weddingDate} 
+          onChange={handleDateChange} 
+          style={{ fontFamily: "inherit" }}
+        />
       </div>
 
       {roadmap.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <h2>Wedding Planning Roadmap</h2>
-          <ul>
+          <h2 style={headingStyle}>Wedding Planning Roadmap</h2>
+          <ul style={{ paddingLeft: "20px" }}>
             {roadmap.map((item, index) => (
-              <li key={index}>
+              <li key={index} style={{ marginBottom: "5px" }}>
                 {item.task} (by {item.deadline})
               </li>
             ))}
